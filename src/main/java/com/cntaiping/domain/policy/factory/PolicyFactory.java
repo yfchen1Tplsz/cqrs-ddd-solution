@@ -22,11 +22,10 @@ public class PolicyFactory {
                 .policyNo(policyNo)
                 .policyStatus(PolicyStatusEnum.POLICY_STATUS_NB.code())
                 .build();
-        Policy policy =  Policy.builder().policyService(policyService).policyEntity(policyEntity).build();
-        //自校验：
-        if(policy.validateNBPolicy()){
-            throw  new ApplicationException("保单号校验不通过，创建保单失败");
-        }
-        return policy;
+
+        return  Policy.builder()
+                .policyService(policyService)
+                .policyEntity(policyEntity)
+                .build();
     }
 }
